@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_HOST="unix://\$(pwd)/docker.sock"
+        DOCKER_HOST="localhost:2345"
         STAGE_INSTANCE="ubuntu@aws-dns"
     }
     stages {
