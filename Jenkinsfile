@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('Setup SSH tunnel') {
         steps {
-                script 
-                    sh "ssh -nNT -L ${DOCKER_HOST}:/var/run/docker.sock ${STAGE_INSTANCE} & echo \$! > /tmp/tunnel.pid"
+                script {
+                 sh "ssh -nNT -L ${DOCKER_HOST}:/var/run/docker.sock ${STAGE_INSTANCE} & echo \$! > /tmp/tunnel.pid"
                     // sometimes it's not enough time to make a tunnel, add sleep
                 sleep 15
                 }
@@ -31,4 +31,5 @@ pipeline {
             }
         }
     }
+}
 
