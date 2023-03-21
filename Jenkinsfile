@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_HOST="localhost:2345"
-        STAGE_INSTANCE="ubuntu@18.185.239.61"
+        STAGE_INSTANCE="ubuntu@18.197.188.53"
     }
     stages {
         stage('Setup SSH tunnel') {
