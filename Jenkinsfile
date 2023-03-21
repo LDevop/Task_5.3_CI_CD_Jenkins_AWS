@@ -17,8 +17,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                sh "DOCKER_HOST=${DOCKER_HOST} docker ps -a"
-                    // DOCKER_HOST=${DOCKER_HOST} docker run hello-world 
+                sh "DOCKER_HOST=${DOCKER_HOST} docker run hello-world"
+                sh "DOCKER_HOST=${DOCKER_HOST} docker ps -a" 
                 }
             }
         }
