@@ -8,7 +8,7 @@ pipeline {
         stage('Setup SSH tunnel') {
         steps {
                 script {
-                 sh "ssh -i ~/.ssh/Jenkins-key-aws.pem -nNT -L ${DOCKER_HOST}:/var/run/docker.sock ${STAGE_INSTANCE} & echo \$! > /tmp/tunnel.pid"
+                 sh "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/Jenkins-key-aws.pem -nNT -L ${DOCKER_HOST}:/var/run/docker.sock ${STAGE_INSTANCE} & echo \$! > /tmp/tunnel.pid"
                     // sometimes it's not enough time to make a tunnel, add sleep
                 sleep 15
                 }
