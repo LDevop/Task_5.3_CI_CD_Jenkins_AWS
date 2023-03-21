@@ -13,6 +13,8 @@ export DOCKER_HOST="localhost:2345"
 ```
 While using this terminal, local docker commands are executed on remote server.
 
+add ssh key to /var/lib/jenkins/.ssh
+
 ## Removing the Socket Forwarding
 You can see the current processes related to ssh by e.g.:
 ```sh
