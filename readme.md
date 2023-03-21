@@ -15,6 +15,9 @@ While using this terminal, local docker commands are executed on remote server.
 
 add ssh key to /var/lib/jenkins/.ssh
 
+![alt text](png/5.3.1.png)
+![alt text](png/5.3.2.png)
+![alt text](png/5.3.3.png)
 ## Removing the Socket Forwarding
 You can see the current processes related to ssh by e.g.:
 ```sh
@@ -37,6 +40,6 @@ And again depending on your environment remove the <user> from group docker, che
 ssh -i /path/to/<key_file> -t <user>@<host> "sudo deluser <user> docker; groups <user>;exit;
 ```
 
-#####_alternative example link_:
+#### _alternative example link_:
 - [https://medium.com/@dperny/forwarding-the-docker-socket-over-ssh-e6567cfab160]
 
