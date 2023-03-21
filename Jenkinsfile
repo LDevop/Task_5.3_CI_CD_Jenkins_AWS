@@ -8,7 +8,7 @@ pipeline {
         stage('Setup SSH tunnel') {
         steps {
                 script {
-                 sh "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/Jenkins-key-aws.pem -nNT -L ${DOCKER_HOST}:/var/run/docker.sock ${STAGE_INSTANCE} & echo \$! > /tmp/tunnel.pid"
+                sh "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/Jenkins-key-aws.pem -nNT -L ${DOCKER_HOST}:/var/run/docker.sock ${STAGE_INSTANCE} & echo \$! > /tmp/tunnel.pid"
                     // sometimes it's not enough time to make a tunnel, add sleep
                 sleep 15
                 }
@@ -17,9 +17,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh
-                    // DOCKER_HOST=${DOCKER_HOST} docker run hello-world
-                    "DOCKER_HOST=${DOCKER_HOST} docker ps -a"
+                sh "DOCKER_HOST=${DOCKER_HOST} docker ps -a"
+                    // DOCKER_HOST=${DOCKER_HOST} docker run hello-world 
                 }
             }
         }
