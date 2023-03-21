@@ -2,21 +2,22 @@ pipeline {
     agent any
     environment {
         DOCKER_HOST="localhost:2345"
-        STAGE_INSTANCE="ubuntu@aws-dns"
+        STAGE_INSTANCE="ubuntu@18.185.239.61"
     }
     stages {
         stage('Setup SSH tunnel') {
         steps {
                 script 
-                    sh "ssh -nNT -L \$(pwd)/docker.sock:/var/run/docker.sock ${STAGE_INSTANCE} & echo \$! > /tmp/tunnel.pid"
+                    sh "ssh -nNT -L ${DOCKER_HOST}:/var/run/docker.sock ${STAGE_INSTANCE} & echo $! > /tmp/tunnel.pid"
                     // sometimes it's not enough time to make a tunnel, add sleep
-                sleep 5
+                sleep 15
                 }
             }
         }
         stage('Deploy') {
             steps {
                 script {
+                    sh "DOCKER_HOST=${DOCKER_HOST} docker run hello-world"
                     sh "DOCKER_HOST=${DOCKER_HOST} docker ps -a"
                 }
             }
